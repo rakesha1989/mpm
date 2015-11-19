@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :assignment_employees
   root 'home#index'
   
   resources :statuses

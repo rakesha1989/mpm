@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Assignment Employees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Assignmnet</th>
+      <th>Employee</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignment_employees.each do |assignment_employee| %>
+      <tr>
+        <td><%= assignment_employee.assignmnet_id %></td>
+        <td><%= assignment_employee.employee_id %></td>
+        <td><%= link_to 'Show', assignment_employee %></td>
+        <td><%= link_to 'Edit', edit_assignment_employee_path(assignment_employee) %></td>
+        <td><%= link_to 'Destroy', assignment_employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Assignment employee', new_assignment_employee_path %>
