@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  resources :statuses
+  resources :activities
+  resources :priorities
   resources :plan_assignments
   resources :assignments
   resources :plan_categories
