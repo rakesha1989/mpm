@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root 'home#index'
   
   resources :statuses
   resources :activities
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :meetings
   resources :companies
-  root 'home#index'
+  
 
   devise_for :employees, controllers: { registrations: "registrations" }
   # The priority is based upon order of creation: first created -> highest priority.
