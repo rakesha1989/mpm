@@ -1,0 +1,25 @@
+<%= form_for(@wing_employee) do |f| %>
+  <% if @wing_employee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wing_employee.errors.count, "error") %> prohibited this wing_employee from being saved:</h2>
+
+      <ul>
+      <% @wing_employee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :wing_id %><br>
+    <%= f.number_field :wing_id %>
+  </div>
+  <div class="field">
+    <%= f.label :employee_id %><br>
+    <%= f.number_field :employee_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Wing Employees</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wing</th>
+      <th>Employee</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wing_employees.each do |wing_employee| %>
+      <tr>
+        <td><%= wing_employee.wing_id %></td>
+        <td><%= wing_employee.employee_id %></td>
+        <td><%= link_to 'Show', wing_employee %></td>
+        <td><%= link_to 'Edit', edit_wing_employee_path(wing_employee) %></td>
+        <td><%= link_to 'Destroy', wing_employee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wing employee', new_wing_employee_path %>

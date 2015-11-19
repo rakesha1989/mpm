@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151118151535) do
+ActiveRecord::Schema.define(version: 20151119084928) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "suffix"
+    t.string   "name"
+    t.string   "cin_no"
+    t.string   "pan_no"
+    t.string   "service"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "employees", force: :cascade do |t|
     t.string   "name"
@@ -34,11 +44,57 @@ ActiveRecord::Schema.define(version: 20151118151535) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "wing_id"
   end
 
   add_index "employees", ["confirmation_token"], name: "index_employees_on_confirmation_token", unique: true
   add_index "employees", ["email"], name: "index_employees_on_email", unique: true
   add_index "employees", ["reset_password_token"], name: "index_employees_on_reset_password_token", unique: true
   add_index "employees", ["unlock_token"], name: "index_employees_on_unlock_token", unique: true
+
+  create_table "meeting_employees", force: :cascade do |t|
+    t.integer  "meeting_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.date     "month"
+    t.date     "date"
+    t.string   "category"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.date     "d_o_b"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "image"
+    t.boolean  "director"
+    t.string   "d_i_n"
+    t.integer  "company_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "wing_employees", force: :cascade do |t|
+    t.integer  "wing_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "wings", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

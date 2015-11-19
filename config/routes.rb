@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  resources :wing_employees
+  resources :wings
+  resources :meeting_employees
+  resources :profiles
+  resources :meetings
+  resources :companies
   root 'home#index'
 
   devise_for :employees, controllers: { registrations: "registrations" }

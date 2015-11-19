@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Wing:</strong>
+  <%= @wing_employee.wing_id %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @wing_employee.employee_id %>
+</p>
+
+<%= link_to 'Edit', edit_wing_employee_path(@wing_employee) %> |
+<%= link_to 'Back', wing_employees_path %>
