@@ -9,7 +9,7 @@
 <body>
 
 <% if employee_signed_in? %>
-<p> Hello, <%= current_employee.name %> | <%= link_to "sign_out", destroy_employee_session_path, :method => 'delete' %> </p>
+<p> Hello, <%= current_employee.name %> | <%= link_to "Meetings", meetings_path %> | <%= link_to "Plans", plans_path %> | <%= link_to "Assignment", assignments_path %> | <%= link_to "Profiles", profiles_path %> |<%= link_to "Status", statuses_path %> | <%= link_to "Priority", priorities_path %> | <%= link_to "Category", categories_path %> | <%= link_to "Activity", activities_path %> | <%= link_to 'Home', root_path %> | <%= link_to "sign_out", destroy_employee_session_path, :method => 'delete' %></p>
 <br>
 
 <% end %>
