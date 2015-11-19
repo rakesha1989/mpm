@@ -8,6 +8,11 @@
 </head>
 <body>
 
+<% if employee_signed_in? %>
+<p> Hello, <%= current_employee.name %> | <%= link_to "sign_out", destroy_employee_session_path, :method => 'delete' %> </p>
+<br>
+
+<% end %>
 <%= yield %>
 
 </body>
