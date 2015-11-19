@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  resources :plan_assignments
+  resources :assignments
+  resources :plan_categories
+  resources :categories
+  resources :plans
   resources :wing_employees
   resources :wings
   resources :meeting_employees

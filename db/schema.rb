@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119084928) do
+ActiveRecord::Schema.define(version: 20151119090947) do
+
+  create_table "assignments", force: :cascade do |t|
+    t.string   "name"
+    t.date     "due_at"
+    t.integer  "activity_id"
+    t.integer  "category_id"
+    t.boolean  "status"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "suffix"
@@ -66,6 +82,32 @@ ActiveRecord::Schema.define(version: 20151119084928) do
     t.integer  "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_assignments", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "assignment_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "plan_categories", force: :cascade do |t|
+    t.integer  "plan_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.integer  "duration"
+    t.integer  "status_id"
+    t.integer  "meeting_id"
+    t.integer  "priority_id"
+    t.string   "rating"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "profiles", force: :cascade do |t|

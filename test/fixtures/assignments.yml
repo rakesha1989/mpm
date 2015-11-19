@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  due_at: 2015-11-19
+  activity_id: 1
+  category_id: 1
+  status: false
+
+two:
+  name: MyString
+  due_at: 2015-11-19
+  activity_id: 1
+  category_id: 1
+  status: false
