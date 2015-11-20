@@ -17,7 +17,7 @@
 
 <p>
   <strong>Company:</strong>
-  <%= @meeting.company_id %>
+  <%= @meeting.company.name %>
 </p>
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |

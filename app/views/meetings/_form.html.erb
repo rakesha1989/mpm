@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :month %><br>
-    <%= f.date_select :month %>
+    <%= f.select :month, %w[Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec] %>
   </div>
   <div class="field">
     <%= f.label :date %><br>
@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select :category, %w[MPM MRM] %>
   </div>
   <div class="field">
     <%= f.label :company_id %><br>
-    <%= f.number_field :company_id %>
+    <%= f.collection_select :company_id, Company.all, :id, :name, prompt: "select Company" %>
   </div>
   <div class="actions">
     <%= f.submit %>
