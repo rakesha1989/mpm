@@ -11,23 +11,18 @@
 </p>
 
 <p>
-  <strong>Duration:</strong>
-  <%= @plan.duration %>
-</p>
-
-<p>
   <strong>Status:</strong>
-  <%= @plan.status_id %>
+  <%= @plan.status.name %>
 </p>
 
 <p>
   <strong>Meeting:</strong>
-  <%= @plan.meeting_id %>
+  <%= @plan.meeting.plan_month %>
 </p>
 
 <p>
   <strong>Priority:</strong>
-  <%= @plan.priority_id %>
+  <%= @plan.priority.name %>
 </p>
 
 <p>
