@@ -10,6 +10,8 @@ class PlansController < ApplicationController
   # GET /plans/1
   # GET /plans/1.json
   def show
+    @plan = Plan.find(params[:id])
+    @meetings = @plan.meetings 
   end
 
   # GET /plans/new
@@ -28,7 +30,7 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to @plan, notice: 'Plan was successfully created.' }
+        format.html { redirect_to meeting_path(@plan.meeting_id), notice: 'Plan was successfully created.' }
         format.json { render :show, status: :created, location: @plan }
       else
         format.html { render :new }
@@ -36,6 +38,8 @@ class PlansController < ApplicationController
       end
     end
   end
+  
+
 
   # PATCH/PUT /plans/1
   # PATCH/PUT /plans/1.json

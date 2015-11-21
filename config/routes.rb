@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :assignment_employees
+  
   root 'home#index'
+
+  resources :meetings do
+    resources :plans
+  end
+
   
   resources :statuses
   resources :activities
@@ -17,6 +22,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :meetings
   resources :companies
+  resources :assignment_employees
   
 
   devise_for :employees, controllers: { registrations: "registrations" }

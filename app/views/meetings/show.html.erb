@@ -22,3 +22,44 @@
 
 <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
 <%= link_to 'Back', meetings_path %> | <%= link_to 'Home', root_path %>
+
+
+<%= form_for([@meeting, @meeting.plans.build]) do |f| %>
+  
+  <% plans = @meeting.plans %>
+<h3> Total plans - <%= plans.size %></h3>
+
+<h3> Add Plans </h3>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_area :name, rows: 3, cols: 60 %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status_id %><br>
+    <%= f.collection_select :status_id, Status.all, :id, :name, prompt: "Select Status" %>
+  </div>
+  <div class="field">
+    <%= f.label :meeting_id %><br>
+    <%= f.collection_select :meeting_id, Meeting.all, :id, :plan_month, prompt: "Select Meeting" %>
+  </div>
+  <div class="field">
+    <%= f.label :priority_id %><br>
+    <%= f.collection_select :priority_id, Priority.all, :id, :name, prompt: "Select Priority" %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.select :rating, %w[1 2 3 4 5]  %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<% for plan in @plans %>
+<%= @meeting.plan.name %>
+<% end %>
