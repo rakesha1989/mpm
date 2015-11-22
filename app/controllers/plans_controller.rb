@@ -11,7 +11,6 @@ class PlansController < ApplicationController
   # GET /plans/1.json
   def show
     @plan = Plan.find(params[:id])
-    @meetings = @plan.meetings 
   end
 
   # GET /plans/new

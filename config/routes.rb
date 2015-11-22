@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
-  
-  root 'home#index'
-
   resources :meetings do
     resources :plans
   end
 
-  
+  root 'home#index'
+
   resources :statuses
   resources :activities
   resources :priorities

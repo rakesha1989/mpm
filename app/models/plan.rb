@@ -9,4 +9,7 @@ class Plan < ActiveRecord::Base
 	has_many :plan_assignments
 	has_many :assignments, through: :plan_assignments
 	
+	def details
+	"#{name} - #{status} - #{start_date} - #{priority}"
+end
 end

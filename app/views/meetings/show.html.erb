@@ -60,6 +60,12 @@
   </div>
 <% end %>
 
-<% for plan in @plans %>
-<%= @meeting.plan.name %>
-<% end %>
+<ul>
+<% for plan in @meeting.plans %>
+	<li>
+		<%= plan.details %>
+	</li>
+	<% end %>
+</ul>
+
+	

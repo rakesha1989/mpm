@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /meetings
   # GET /meetings.json
   def index
@@ -10,7 +10,7 @@ class MeetingsController < ApplicationController
   # GET /meetings/1
   # GET /meetings/1.json
   def show
-    @meeting = Meeting.find(params[:id])
+   @meeting = Meeting.find(params[:id])
   end
 
   # GET /meetings/new
