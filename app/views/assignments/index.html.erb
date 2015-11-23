@@ -19,8 +19,8 @@
       <tr>
         <td><%= assignment.name %></td>
         <td><%= assignment.due_at %></td>
-        <td><%= assignment.activity_id %></td>
-        <td><%= assignment.category_id %></td>
+        <td><%= assignment.activity.name %></td>
+        <td><%= assignment.category.name %></td>
         <td><%= assignment.status %></td>
         <td><%= link_to 'Show', assignment %></td>
         <td><%= link_to 'Edit', edit_assignment_path(assignment) %></td>

@@ -38,7 +38,7 @@
 
 <%= form_for([@plan, @plan.assignments.build]) do |f| %>
   
- <% assignments = @plan.assignments %>
+ <% assignments = @plan.plan_assignments %>
 <h3> Total Assignments - <%= assignments.size %></h3>
 
 <h3> Add Assignments </h3>
@@ -59,6 +59,10 @@
   <div class="field">
     <%= f.label :category_id %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name, prompt: "Select Category" %>
+  </div>
+    <div class="field">
+    <%= f.label :Assign_To %><br>
+    <%= f.collection_select :temp, Employee.all, :id, :name, prompt: "Selecty Employee" %>
   </div>
   <div class="field">
     <%= f.label :completed %><br>
@@ -81,7 +85,7 @@
 <h3> Pending assignments </h3>
 <ul>
   <% for assignment in pending_assignments %>
-  <li><%= @assignment.name %> <small><%= time_ago_in_words(assignment.due_at) %> ago </small></li>
+  <li><%= assignment.name %> <small><%= time_ago_in_words(assignment.due_at) %> ago </small></li>
   <% end %>
 </ul>
 
@@ -89,7 +93,7 @@
 <h3> Assigned assignments </h3>
 <ul>
   <% for assignment in assigned_assignments %>
-  <li><%= @assignment.name %> <small><%= time_ago_in_words(assignment.due_at) %> from now </small>
+  <li><%= assignment.name %> <small><%= time_ago_in_words(assignment.due_at) %> from now </small>
   <%= link_to "mark as complete", assignments_mark_as_complete_path(assignment_id: assignment.id) %></li>
   <% end %>
 </ul>
@@ -98,7 +102,7 @@
 <h3> Completed Assignments </h3>
 <ul>
   <% for assignment in completed_assignments %>
-  <li><%= @assignment.name %> <small><%= time_ago_in_words(assignment.updated_at) %> 
+  <li><%= assignment.name %> <small><%= time_ago_in_words(assignment.updated_at) %> 
   <%= assignment.updated_at < Time.now ? "ago" : "from now" %>
    </small>
    <%= link_to "mark as incomplete", assignments_mark_as_incomplete_path(assignment_id: assignment.id) %></li>
