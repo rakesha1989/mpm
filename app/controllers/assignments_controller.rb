@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:show, :edit, :update, :destroy]
+  before_action :find_record, only: [:edit, :show, :update, :destroy]
 
   # GET /assignments
   # GET /assignments.json
@@ -10,6 +11,7 @@ class AssignmentsController < ApplicationController
   # GET /assignments/1
   # GET /assignments/1.json
   def show
+    @assignment = Assignment.find(params[:id])
   end
 
   # GET /assignments/new
@@ -28,7 +30,7 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to @assignment, notice: 'Assignment was successfully created.' }
+        format.html { redirect_to plan_path, notice: 'Assignment was successfully created.' }
         format.json { render :show, status: :created, location: @assignment }
       else
         format.html { render :new }
@@ -71,4 +73,14 @@ class AssignmentsController < ApplicationController
     def assignment_params
       params.require(:assignment).permit(:name, :due_at, :activity_id, :category_id, :status)
     end
+
+    def find_record
+    begin
+    @assignment = Assignment.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, notice: "Record Doesn't exist"
+  end
+end
+
+
 end

@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show, :edit, :update, :destroy]
+  
+  before_action :find_record, only: [:edit, :show, :update, :destroy]
 
   # GET /plans
   # GET /plans.json
@@ -12,7 +13,6 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
   end
-
   # GET /plans/new
   def new
     @plan = Plan.new
@@ -21,6 +21,7 @@ class PlansController < ApplicationController
   # GET /plans/1/edit
   def edit
   end
+  
 
   # POST /plans
   # POST /plans.json
@@ -66,12 +67,18 @@ class PlansController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_plan
-      @plan = Plan.find(params[:id])
-    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
       params.require(:plan).permit(:name, :start_date, :status_id, :meeting_id, :priority_id, :rating)
     end
+
+    def find_record
+    begin
+    @plan = Plan.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, notice: "Record Doesn't exist"
+  end
+end
 end

@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :plans do
+    resources :assignments
+  end
+
+  get 'assignments/mark_as_complete'
+  get 'assignments/mark_as_incomplete'
+
   resources :meetings do
     resources :plans
   end
